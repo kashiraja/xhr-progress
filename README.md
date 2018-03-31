@@ -1,6 +1,9 @@
 # xhr-progress.js
 A minimalist progress bar for XHR/AJAX requests that uses same styling as GitHub progress bar.
 
+# Demo
+This [demo](https://kashiraja.github.io/xhr-progress/examples/admin_dashboard.html) shows how it is possible to use xhr-progress.js in a panel as part of an admin dashboard.
+
 # Options
 *   parent: Parent element
 *   height: Height [px]
@@ -10,9 +13,6 @@ A minimalist progress bar for XHR/AJAX requests that uses same styling as GitHub
 *   styleFailed: Box shadow style of bar
 *   paddingTop: Add some whitespace above the progress bar [px]
 *   fadeOutDuration: Once complete, fade out the progress bar during given interval [ms]
-
-# Demo
-This [demo](https://kashiraja.github.io/xhr-progress/examples/admin_dashboard.html) shows how it is possible to use xhr-progress.js in a panel as part of an admin dashboard.
 
 # Acknowledgments
 - GitHub
