@@ -32,7 +32,7 @@ var XhrProgress =
     colorFailed: '#ff4f4f',
     style: '0 0 10px rgba(119, 182, 255, 0.7)',
     styleFailed: '0 0 10px rgba(255, 119, 119, 0.7)',
-    paddingTop: 2,
+    paddingTop: 0,
     fadeOutDuration: 400,
   };
 
