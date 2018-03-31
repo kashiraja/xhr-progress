@@ -10,12 +10,14 @@ var XhrProgress =
   /**
    * @param {object} Set options:
    *   parent - Parent element
-   *   height - Height in pixels
+   *   height - Height [px]
    *   delay [ms] - Time to wait until the progress bar is shown after start() is called [not implemented]
    *   color - Color of progress bar
    *   colorFailed - Color of progress bar if failed()
    *   style - Box shadow style of bar
    *   styleFailed - Box shadow style of bar
+   *   paddingTop: Add some whitespace above the progress bar [px]
+   *   fadeOutDuration: Once complete, fade out the progress bar during given interval [ms]
    */
 
   if (options == null){

@@ -10,12 +10,14 @@ var XhrProgress =
   /**
    * @param {object} Set options:
    *   parent - Parent element
-   *   height - Height in pixels
+   *   height - Height [px]
    *   delay [ms] - Time to wait until the progress bar is shown after start() is called [not implemented]
    *   color - Color of progress bar
    *   colorFailed - Color of progress bar if failed()
    *   style - Box shadow style of bar
    *   styleFailed - Box shadow style of bar
+   *   paddingTop: Add some whitespace above the progress bar [px]
+   *   fadeOutDuration: Once complete, fade out the progress bar during given interval [ms]
    */
 
   if (options == null){
@@ -30,6 +32,7 @@ var XhrProgress =
     colorFailed: '#ff4f4f',
     style: '0 0 10px rgba(119, 182, 255, 0.7)',
     styleFailed: '0 0 10px rgba(255, 119, 119, 0.7)',
+    paddingTop: 2,
     fadeOutDuration: 400,
   };
 
@@ -42,9 +45,11 @@ var XhrProgress =
    * (Internal) Generate html to render progress bar
    * @returns {string}
    */
-  function template(percent, height, color, style){
-      return `<div style="position: relative;">` +
-      `  <div style="position: absolute; width: 100%;">` +
+  function template(percent, height, color, style, paddingTop){
+    var paddingTopHtml = paddingTop == null ? '' : `padding-top: ${paddingTop}px;`;
+
+    return `<div style="position: relative;">` +
+      `  <div style="position: absolute; width: 100%; ${paddingTopHtml}">` +
       `    <div style="height: ${height}px; background-color: ${color}; ` +
            `position: absolute; width: ${percent.toFixed(0)}%; box-shadow: ${style};` +
            `transition: width 0.4s ease 0s; z-index: 10000;"` +
@@ -69,17 +74,17 @@ var XhrProgress =
    function render(isOk){
     if (visible){
       if (isOk !== false){
-        renderProgressBar(current.percent, current.height, current.color, current.style);
+        renderProgressBar(current.percent, current.height, current.color, current.style, current.paddingTop);
       }
       else{
-        renderProgressBar(current.percent, current.height, current.colorFailed, current.styleFailed);
+        renderProgressBar(current.percent, current.height, current.colorFailed, current.styleFailed, current.paddingTop);
       }
     }
     else{
       $(current.parent).html("");
     }
 
-    function renderProgressBar(percent, height, color, style){
+    function renderProgressBar(percent, height, color, style, paddingTop){
       var paramsChanged = false;
 
       if (height !== renderedParams.height ||
@@ -92,7 +97,7 @@ var XhrProgress =
       var test = false;
 
       if (!isRendered() || paramsChanged || test){
-        $(current.parent).html(template(percent, height, color, style));
+        $(current.parent).html(template(percent, height, color, style, paddingTop));
       }
       else{
         $(current.parent).find('div>div>div').width(`${current.percent.toFixed(0)}%`);
@@ -224,4 +229,3 @@ var XhrProgress =
 
   return {start, trickle, increment, set, get, fail, complete, visible};
 });
-
