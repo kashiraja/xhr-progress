@@ -19,6 +19,21 @@
   </head>
   <body>
 
+    <style>
+    .panel-default>.panel-heading {
+        color: #ddd;
+        background-color: #363636;
+        border-color: #363636;
+    }
+
+    .panel-title {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 16px;
+        color: inherit;
+    }
+    </style>
+
     <div class="container-fluid">
       <div class="row">
 
@@ -36,9 +51,9 @@
 
                 <div id="xhr-progress"></div>
 
-                <div class="panel-body" style="height: 150px;">
+                <div class="panel-body" style="height: 300px;">
                   <div class="row" style="height: 100%;">
-                    <div class="col-sm-12" style="height: 100%;">
+                    <div id="panel1-contents" class="col-sm-12" style="height: 100%; display: none;">
                       <p>This example shows how the progress bar can be shown as part of a specific panel in an admin dashboard.</p>
                     </div>
                   </div>
@@ -61,7 +76,7 @@
 
                 </div>
 
-                <div class="panel-body" style="height: 150px;">
+                <div class="panel-body" style="height: 300px;">
                   <div class="row" style="height: 100%;">
                     <div class="col-sm-12" style="height: 100%;">
                       <p></p>
@@ -86,7 +101,7 @@
 
                 </div>
 
-                <div class="panel-body" style="height: 150px;">
+                <div class="panel-body" style="height: 300px;">
                   <div class="row" style="height: 100%;">
                     <div class="col-sm-12" style="height: 100%;">
                       <p></p>
@@ -111,7 +126,7 @@
 
                 </div>
 
-                <div class="panel-body" style="height: 150px;">
+                <div class="panel-body" style="height: 300px;">
                   <div class="row" style="height: 100%;">
                     <div class="col-sm-12" style="height: 100%;">
                       <p></p>
@@ -128,12 +143,12 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js?test=code"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js?test=code"></script>
-
-    <script src="xhr-progress.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://raw.githubusercontent.com/kashiraja/xhr-progress.js/master/dist/xhr-progress.js"></script>
+    <!-- <script src="xhr-progress.js"></script> -->
 
     <script>
       $(document).ready(function(){
@@ -151,6 +166,7 @@
 
               setTimeout(function(){
                 progressBar.complete();
+                $('#panel1-contents').fadeIn();
               }, 1000);
             }, 1000);
           }, 1000);
